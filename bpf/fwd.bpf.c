@@ -48,8 +48,8 @@
 // /usr/include/asm-generic/int-ll64.h 
 struct fwd {
     __u32         ifindex;
-    unsigned char dmac[ETH_ALEN];
     unsigned char smac[ETH_ALEN];
+    unsigned char dmac[ETH_ALEN];
 };
 
 struct bpf_map_def SEC("maps") hfwd = {
