@@ -153,8 +153,8 @@ func (i *fwdCli) query(ctx context.Context) ([]*FwdElem, error) {
 		rr.Iface |= uint32(vv[1]) << 8
 		rr.Iface |= uint32(vv[2]) << 16
 		rr.Iface |= uint32(vv[3]) << 24
-		rr.SrcMac = fmt.Sprintf("%x:%x:%x:%x:%x:%x", vv[4], vv[5], vv[6], vv[7], vv[8], vv[9])
-		rr.DstMac = fmt.Sprintf("%x:%x:%x:%x:%x:%x", vv[0xa], vv[0xb], vv[0xc], vv[0xd], vv[0xe], vv[0xf])
+		rr.SrcMac = fmt.Sprintf("%02x:%02x:%02x:%02x:%02x:%02x", vv[4], vv[5], vv[6], vv[7], vv[8], vv[9])
+		rr.DstMac = fmt.Sprintf("%02x:%02x:%02x:%02x:%02x:%02x", vv[0xa], vv[0xb], vv[0xc], vv[0xd], vv[0xe], vv[0xf])
 
 		r = append(r, rr)
 	}

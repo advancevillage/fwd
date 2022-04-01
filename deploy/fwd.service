@@ -1,0 +1,14 @@
+[Unit]
+Description=fwd
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/local/fwd/
+ExecStart=/usr/local/fwd/bin/fwd -c /usr/local/fwd/conf/fwd.json
+Restart=always
+RestartSec=5s
+TimeoutSec=15s
+
+[Install]
+WantedBy=multi-user.target

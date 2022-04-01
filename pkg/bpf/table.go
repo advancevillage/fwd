@@ -45,7 +45,7 @@ func NewTableClient(logger logx.ILogger, file string, tYpe string, keySize int, 
 	}
 	tYpe = strings.ToLower(tYpe)
 	switch tYpe {
-	case "hash", "lru_hash":
+	case "hash":
 		t.flags = bpf_f_no_prealloc
 		if keySize < 1 || valueSize < 1 {
 			return nil, fmt.Errorf("keySize or valueSize param are invalid")
@@ -67,6 +67,11 @@ func NewTableClient(logger logx.ILogger, file string, tYpe string, keySize int, 
 		t.flags = bpf_f_no_prealloc
 		if valueSize != 4 {
 			return nil, fmt.Errorf("valueSize param is invalid")
+		}
+	case "lru_hash":
+		t.flags = bpf_f_prealloc
+		if keySize < 1 || valueSize < 1 {
+			return nil, fmt.Errorf("keySize or valueSize param are invalid")
 		}
 	default:
 		return nil, fmt.Errorf("don't support %s map type", tYpe)

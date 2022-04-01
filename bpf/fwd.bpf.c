@@ -54,9 +54,9 @@ struct fwd {
 
 struct bpf_map_def SEC("maps") hfwd = {
     .type = BPF_MAP_TYPE_LRU_HASH, 
-    .key_size = sizeof(__u32),
-    .value_size = sizeof(struct fwd),
-    .max_entries = 100,
+    .key_size = 0x04,
+    .value_size = 0x10,
+    .max_entries = 10000,
 };
 
 static __inline void  ipv4_decrease_ttl(struct iphdr *iph)
