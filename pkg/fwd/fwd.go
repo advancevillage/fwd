@@ -148,7 +148,7 @@ func (i *fwdCli) query(ctx context.Context) ([]*FwdElem, error) {
 			vv = kv[i].Value
 			rr = new(FwdElem)
 		)
-		rr.Ip = net.IPv4(kk[3], kk[2], kk[1], kk[0]).String()
+		rr.Ip = net.IPv4(kk[0], kk[1], kk[2], kk[3]).String()
 		rr.Iface |= uint32(vv[0])
 		rr.Iface |= uint32(vv[1]) << 8
 		rr.Iface |= uint32(vv[2]) << 16
@@ -188,10 +188,10 @@ func (d *fwdCli) checkip(ip string) ([]byte, error) {
 	}
 	b := make([]byte, 4)
 
-	b[0] = addr[3]
-	b[1] = addr[2]
-	b[2] = addr[1]
-	b[3] = addr[0]
+	b[0] = addr[0]
+	b[1] = addr[1]
+	b[2] = addr[2]
+	b[3] = addr[3]
 
 	return b, nil
 }
