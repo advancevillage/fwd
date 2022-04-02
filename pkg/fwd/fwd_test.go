@@ -54,7 +54,7 @@ var ipTest = map[string]struct {
 }{
 	"case1": {
 		dstIp: "127.0.0.1",
-		exp:   []byte{0x01, 0x00, 0x00, 0x7f},
+		exp:   []byte{0x7f, 0x00, 0x00, 0x01},
 	},
 }
 
