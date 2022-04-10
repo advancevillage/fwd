@@ -52,12 +52,12 @@ struct fwd {
     unsigned char dmac[ETH_ALEN];
 };
 
-struct bpf_map_def SEC("maps") hfwd = {
-    .type = BPF_MAP_TYPE_LRU_HASH, 
-    .key_size = 0x04,
-    .value_size = 0x10,
-    .max_entries = 10000,
-};
+struct {
+   __uint(type, BPF_MAP_TYPE_LRU_HASH);
+   __type(key,          0x04);
+   __type(value,        0x10);
+   __uint(max_entries,  10000);
+} hfwd SEC(".maps"); 
 
 static __inline void  ipv4_decrease_ttl(struct iphdr *iph)
 {
